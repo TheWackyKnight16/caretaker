@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://j7ebbteve2h7"]
+
+[ext_resource type="Script" uid="uid://b35xtddsaettp" path="res://scripts/maze_generator.gd" id="1_8xbu6"]
+[ext_resource type="PackedScene" uid="uid://mil1wsiep6gg" path="res://scenes/maze/wall.tscn" id="2_tn72y"]
+[ext_resource type="PackedScene" uid="uid://ceeccqt6cmexy" path="res://scenes/maze/light.tscn" id="3_6uyvq"]
+
+[sub_resource type="Environment" id="Environment_tn72y"]
+background_mode = 1
+background_color = Color(0.00784314, 0.0156863, 0.0313726, 1)
+ambient_light_color = Color(0.0745098, 0.0980392, 0.203922, 1)
+
+[node name="MazeGenerator" type="Node3D"]
+script = ExtResource("1_8xbu6")
+maze_width = 20
+maze_height = 20
+wall_scene = ExtResource("2_tn72y")
+light_scene = ExtResource("3_6uyvq")
+light_vertical_offset = 2.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tn72y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

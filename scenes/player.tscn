@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bojnb7sj0sudq"]
+
+[ext_resource type="Script" uid="uid://c0iid44l4bea2" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://br5txise6rinv" path="res://scripts/weapon_holder.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://bxwklm3rlnnrh" path="res://scenes/shotgun.tscn" id="3_qhqgy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_u8vuu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3vyb7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.0745098, 0.0980392, 0.203922, 1)
+light_energy = 0.1
+shadow_enabled = true
+omni_range = 2.0
+omni_attenuation = 0.5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+current = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+fov = 80.0
+
+[node name="WeaponHolder" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54721, -0.238712, -0.581749)
+script = ExtResource("2_g2els")
+idle_sway_amplitude_pos = Vector3(0.004, 0.006, 0)
+recoil_recover_speed = 80.0
+recoil_return_speed = 3.0
+
+[node name="Shotgun" parent="Camera3D/WeaponHolder" instance=ExtResource("3_qhqgy")]
+transform = Transform3D(0.999848, -0.0174524, 8.09456e-11, 0.0174416, 0.999229, -0.0351786, 0.000613954, 0.0351733, 0.999381, 0, 0, 0)
+recoil_impulse_rot_deg = Vector3(55, 1, 0)
+recoil_impulse_pos = Vector3(0, 0.01, 0.7)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D/WeaponHolder/Shotgun"]
+transform = Transform3D(0.557413, 0.409415, -0.722268, 0.799782, -0.0313353, 0.599472, 0.2228, -0.91181, -0.344909, -0.966144, 0.560879, -0.767057)
+light_color = Color(0.0745098, 0.0980392, 0.203922, 1)
+light_energy = 0.2
+light_cull_mask = 4294966274
+spot_range = 2.56454
+spot_attenuation = 0.5
+spot_angle = 44.7705
+
+[node name="FmodListener3D" type="FmodListener3D" parent="Camera3D"]
+
+[node name="FootstepEventEmitter3D" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/FootstepSounds"
+event_guid = "{6f9067e3-b40b-4d1b-b140-84aa6f2f18be}"
+fmod_parameters/SurfaceType/id = 6875181561321969062
+fmod_parameters/SurfaceType = 0.0
+fmod_parameters/SurfaceType/variant_type = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

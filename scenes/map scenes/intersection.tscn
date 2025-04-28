@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://j8qgv42ep4rk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4nepw"]
+size = Vector2(5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nepw"]
+
+[node name="Intersection" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_4nepw")
+surface_material_override/0 = SubResource("StandardMaterial3D_4nepw")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck4tt0w3r5va"]
+
+[ext_resource type="PackedScene" uid="uid://wajgpwt5ynhp" path="res://assets/models/chandelier/Steampunk-chandelier-colored.glb" id="1_bljo2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tp31"]
+transparency = 1
+albedo_color = Color(0.67451, 0.419608, 0.14902, 1)
+emission_enabled = true
+emission = Color(0.67451, 0.419608, 0.14902, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t8fn2"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 2.5
+
+[node name="chandelier_1" instance=ExtResource("1_bljo2")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.9)
+light_color = Color(0.964706, 0.803922, 0.14902, 1)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.942857)
+light_color = Color(0.964706, 0.803922, 0.14902, 1)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.946409, -0.5, 0.0539136)
+light_color = Color(0.964706, 0.803922, 0.14902, 1)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94203, -0.5, 0.0539136)
+light_color = Color(0.964706, 0.803922, 0.14902, 1)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, -0.6, 0)
+material_override = SubResource("StandardMaterial3D_5tp31")
+mesh = SubResource("CylinderMesh_t8fn2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, -0.6, 0)
+material_override = SubResource("StandardMaterial3D_5tp31")
+mesh = SubResource("CylinderMesh_t8fn2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, -0.6, 0.9)
+material_override = SubResource("StandardMaterial3D_5tp31")
+mesh = SubResource("CylinderMesh_t8fn2")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, -0.6, -0.9)
+material_override = SubResource("StandardMaterial3D_5tp31")
+mesh = SubResource("CylinderMesh_t8fn2")
