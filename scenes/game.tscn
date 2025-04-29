@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://de0pvg1h0ser7"]
+[gd_scene load_steps=12 format=3 uid="uid://de0pvg1h0ser7"]
 
 [ext_resource type="PackedScene" uid="uid://b3afy0lae4ge1" path="res://assets/models/map/prototype_map.blend" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://bojnb7sj0sudq" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://qove7fcs3jy4" path="res://scenes/monster_prototype.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ck4tt0w3r5va" path="res://assets/models/chandelier/chandelier_1.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dv7d0lrwdw40n" path="res://assets/models/oil lamp/oil_lamp_1.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cr87v6x7dngk4" path="res://assets/models/bookshelves/bookshelf_1.tscn" id="6_p57ef"]
 
 [sub_resource type="Environment" id="Environment_iywne"]
 background_mode = 1
@@ -38,6 +39,7 @@ bank_paths = ["res://fmod banks/Desktop/Master.bank"]
 [node name="OmniLight3D" type="OmniLight3D" parent="EditorLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.5, 0)
 light_energy = 0.5
+editor_only = true
 omni_range = 4096.0
 omni_attenuation = 0.0
 
@@ -139,4 +141,7 @@ mesh = SubResource("SphereMesh_lbhrr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.9, 0)
 
 [node name="LAMPTEMP" parent="." instance=ExtResource("4_lbhrr")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 18, 0.400001, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -18.3, 0.400001, -1.5)
+
+[node name="Bookshelf" parent="." instance=ExtResource("6_p57ef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 1.5, 9.1)
