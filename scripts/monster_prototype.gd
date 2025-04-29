@@ -89,16 +89,15 @@ func on_sound_heard(sound_position: Vector3, sound_volume: float, sound_type: St
 	var distance_to_sound = global_position.distance_to(sound_position)
 	var effective_hearing_range = base_hearing_radius * hearing_sensitivity
 	
-	var space_state = get_world_3d().direct_space_state
 	
-	for i in range(60):
-		var angle_deg = i * 6
-		var angle_rad = deg_to_rad(angle_deg)
-		var direction = Vector3(cos(angle_rad), 0, sin(angle_rad))
-		var to = global_position + direction * 25
-		var ray_query = PhysicsRayQueryParameters3D.create(global_position, to)
-		ray_query.collision_mask = 4
-		var ray_result = space_state.intersect_ray(ray_query)
+	var space_state = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.create(global_position, sound_position)
+	ray_query.collision_mask = 4
+	var ray_result = space_state.intersect_ray(ray_query)
+	
+	var is_occluded = false
+	if ray_result:
+		is_occluded = true
 	
 	# debug hearing radius
 	hearing_radius.mesh.radius = effective_hearing_range
